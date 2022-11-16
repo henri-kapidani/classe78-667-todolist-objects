@@ -24,22 +24,16 @@ new Vue({
 	data: {
 		todos: [
 			{
-				id: 'ciao',
 				text: 'Fare i compiti',
 				done: true,
-				list: [0, 1, 2],
 			},
 			{
-				id: 'ciao',
 				text: 'Fare la spesa',
 				done: true,
-				list: [0],
 			},
 			{
-				id: 'ciao',
 				text: 'Fare il bucato',
 				done: false,
-				list: [0, 1],
 			},
 		],
 		newTodo: {
