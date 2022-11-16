@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Todo List</title>
+
+	<!-- fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+	<!-- font-awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<!-- styles -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- vue -->
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js" defer></script>
+	<script src="js/script.js" defer></script>
+
+	<style>
+		[v-cloak] {
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app" class="container" v-cloak>
+		<div class="logo">
+			<img src="img/logo-boolean.svg" alt="Logo Boolean" />
+		</div>
+
+		<div class="new-todo">
+			<input
+				@keyup.enter="addTodo"
+				type="text"
+				placeholder="Nuovo Todo"
+				v-model="newTodo.text"
+			/>
+			<button @click="addTodo">Aggiungi</button>
+		</div>
+
+		<div class="todos-container">
+			<h2 v-if="todos.length == 0">Non ci sono todo</h2>
+			<ul v-else>
+				<li
+					v-for="(todo, i) in todos"
+					class="todo"
+					:key="todo.id"
+					:class="{done: todo.done}"
+					@click="invertDone(i)"
+				>
+					{{ todo.text }}
+					<i v-for="i in todo.list.length" class="fas fa-times" @click="deleteTodo(i)"></i>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+
+</html>
